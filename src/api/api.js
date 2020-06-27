@@ -18,7 +18,7 @@ class Api {
       order: 'desc'
     };
 
-    return this.request.get('/search/repositories', params, undefined);
+    return this.request.get('http://private-5815fe-recommendationsknip.apiary-mock.com/products', params, undefined);
   }
 }
 

@@ -12,12 +12,12 @@ function* fetchTrendingRepo({ payload: { date } }) {
   try {
     yield put({ type: TRENDING_REPO_LOADING });
     const response = yield call({ context: api, fn: api.getTrendingRepo }, date);
-    yield put({ type: TRENDING_REPO_SUCCESS, payload: { items: response.items } });
+    yield put({ type: TRENDING_REPO_SUCCESS, payload: { items: response } });
   }
   catch (error) {
     yield put({ type: TRENDING_REPO_ERROR, payload: { errorMessage: error.message } });
   }
-}
+}  
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function* watcherSaga() {

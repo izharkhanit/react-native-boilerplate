@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 import { getTrendingRepo } from '../../store/actions';
 import { Text, Button } from '../../common';
 import { NAVIGATION_TO_DETAIL_SCREEN } from '../../navigation';
+import ProductList from './ProductList';
 import { Status } from '../../api';
 import { translate } from '../../i18n';
 import { ThemeContext, lightTheme, darkTheme } from '../../theme';
+import SharedStyles from './HomeScreen.style';
 
 const HomeScreen = ({
   /**
@@ -67,11 +69,39 @@ const HomeScreen = ({
           value={isDarkTheme}
         />
 
-        <Button title={translate('homeScreen.detailButton')} onPress={() => navigation.navigate(NAVIGATION_TO_DETAIL_SCREEN)} />
+        <Button title={translate('homeScreen.productList')}/>
 
         <Text>{`${translate('homeScreen.apiCallStatus')} : ${status}`}</Text>
         {errorMessage !== '' && (<Text>{errorMessage}</Text>)}
-        <Text>{JSON.stringify(items)}</Text>
+
+        <ScrollView showsVerticalScrollIndicator={false}>
+                            {items.map((product) => {
+                                return (
+                                    <ProductList
+                                        key={product.id}
+                                        style={SharedStyles}
+                                        productTitle={product.title}
+                                        productImage={product.images[0].thumb}
+                                        productPrice={product.price}
+                                        onPress={() =>
+                                          navigation.navigate(NAVIGATION_TO_DETAIL_SCREEN, {
+                                            productTitle: `${product.title}`,
+                                            productDescription: `${product.description}`,
+                                            productSpecification: `${product.specification}`,
+                                            productPrice: `${product.price}`,
+                                            productImage: `${product.images[0].original}`,
+                                          })
+                                        }
+                                    />
+                                )
+                            })
+                            }
+                        </ScrollView>
+        {/* to see the json fetched data uncomment below code */}
+        {/* <Text>{JSON.stringify(items)}</Text> */}
+      
+       
+
       </View>
     </ScrollView>
   );

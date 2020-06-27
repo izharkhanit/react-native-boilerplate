@@ -11,7 +11,7 @@
     "appbarTitle": "Home Screen",
     "message": "React Native Boilerplate",
     "darkMode": "Dark Mode",
-    "detailButton": "Detail Screen",
+    "productList": "Product List",
     "apiCallStatus": "Api call status"
   },
   "detailScreen": {

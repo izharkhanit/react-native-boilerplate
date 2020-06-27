@@ -63,7 +63,8 @@ class Request {
      */
     data
   ) {
-    let url = `${this.configuration.baseUrl}${this.configuration.basePath}${endpoint}`;
+    // let url = `${this.configuration.baseUrl}${this.configuration.basePath}${endpoint}`;
+    let url = `${endpoint}`;
 
     const headers = {
       'User-Agent': this.configuration.userAgent,
