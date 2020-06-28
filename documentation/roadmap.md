@@ -7,4 +7,3 @@
 - [x] IMPLEMENT: Language localisation
 - [x] IMPROVE: Write good documentaion (need help)
 - [ ] IMPLEMENT: Write jest tests (need help)
-- [ ] IMPLEMENT: Branch that contains only react native and redux, no redux-saga
